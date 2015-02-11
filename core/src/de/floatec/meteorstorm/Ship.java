@@ -1,24 +1,23 @@
 package de.floatec.meteorstorm;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector2;
 
-public class Ship {
-	private Texture texture;
-	private Sprite sprite;
-	private float x, y;
-	private int directionY;
-	private int directionX;
-	private GameScreen screen;
-    private Vector2 direction;
+public class Ship extends GameObject{
+	//private Texture texture;
+	//private Sprite sprite;
+	//private float x, y;//position
+	//private int directionY;
+	//private int directionX;
+	//private GameScreen screen;
+    //private Vector2 direction;
 
 	public Ship(GameScreen screen) {
+        super();
 		this.screen = screen;
 		texture = new Texture(Gdx.files.internal("spaceship.png"));
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);

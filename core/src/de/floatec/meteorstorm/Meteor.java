@@ -3,22 +3,19 @@ package de.floatec.meteorstorm;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Meteor {
-	private Texture texture;
-	private Sprite sprite;
-	private float x, y;
-	private float directionX;
-	private GameScreen screen;
-	private float scale;
+	//private Texture texture;
+	//private Sprite sprite;
+	//private float x, y;//position
+	//private float directionX;
+	//private GameScreen screen;
+	//private float scale;
 
-	public Meteor(GameScreen screen) {
+	public Meteor(GameScreen screen) extends GameObject{
 		this.screen = screen;
 		texture = new Texture(Gdx.files.internal("meteor.png"));
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
