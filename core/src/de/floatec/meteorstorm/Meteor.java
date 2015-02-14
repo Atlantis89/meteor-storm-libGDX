@@ -1,7 +1,6 @@
 package de.floatec.meteorstorm;
 
 import java.util.Random;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -16,9 +15,10 @@ public class Meteor {
 	//private float scale;
 
 	public Meteor(GameScreen screen) extends GameObject{
-		this.screen = screen;
-		texture = new Texture(Gdx.files.internal("meteor.png"));
-		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+        super(screen, "meteor.png");
+		//this.screen = screen;
+		//texture = new Texture(Gdx.files.internal("meteor.png"));
+		//texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		Random randGenerator = new java.util.Random(System.currentTimeMillis());
 		x = screen.getW();
 		y = screen.getH() * (float) randGenerator.nextDouble();

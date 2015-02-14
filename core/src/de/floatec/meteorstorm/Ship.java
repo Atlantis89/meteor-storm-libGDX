@@ -17,12 +17,12 @@ public class Ship extends GameObject{
     //private Vector2 direction;
 
 	public Ship(GameScreen screen) {
-        super();
-		this.screen = screen;
-		texture = new Texture(Gdx.files.internal("spaceship.png"));
-		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		x = 100;
-		y = 100;
+        super(screen, "spaceship.png");
+		//this.screen = screen;
+		//texture = new Texture(Gdx.files.internal("spaceship.png"));
+		//texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		//x = 100;
+		//y = 100;
 		TextureRegion region = new TextureRegion(texture, 0, 0,
 				texture.getWidth(), texture.getHeight());
 		sprite = new Sprite(region);
