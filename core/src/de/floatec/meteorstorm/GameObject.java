@@ -2,17 +2,21 @@ package de.floatec.meteorstorm;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 
 public class GameObject {
-    private Vector2 position;
-    private Vector2 direction = new Vector2(0f,0f);
-    private Texture texture;
+    protected Vector2 position;
+    protected Vector2 direction = new Vector2(0f,0f);
+    protected Texture texture;
     //private Sprite sprite;
     //private int directionY, directionX;
-    private GameScreen screen;
-    private float scale;
+    protected GameScreen screen;
+    protected float scale;
+    protected Sprite sprite;
 
     /*
     public GameObject(Vector2 position, Vector2 direction, Texture texture, Sprite sprite, GameScreen screen, float scale){
@@ -29,6 +33,10 @@ public class GameObject {
         this.texture = new Texture(Gdx.files.internal(textur));
         this.texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
         this.position = position;
+
+        TextureRegion region = new TextureRegion(texture, 0, 0,
+                texture.getWidth(), texture.getHeight());
+        sprite = new Sprite(region);
     }
     /* getter/setter */
     public void setTexture(Texture textur){
@@ -51,7 +59,7 @@ public class GameObject {
         this.direction.x = x;
     }
     public void setDirectionY(float y){
-        this.direction.x = y;
+        this.direction.y = y;
     }
     public Vector2 getDirection(){
         return this.direction;
@@ -83,4 +91,15 @@ public class GameObject {
     public float getHeight() {
         return this.texture.getHeight();
     }
+
+    public void draw(SpriteBatch batch) {
+
+        batch.draw(texture,position.x, position.y,texture.getWidth(),texture.getHeight());
+
+    }
+    public void update(float dt) {
+        Vector2 move = direction.nor().scl(80*dt);
+        position = position.add(move);
+    }
+
 }
