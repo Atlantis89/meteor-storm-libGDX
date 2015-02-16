@@ -68,30 +68,26 @@ public class GameScreen implements Screen {
 	private void update(float dt) {
 
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			ship.setDirectionX(1);
+			ship.direction.x=(1);
 		} else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			ship.setDirectionX(-1);
+			ship.direction.x=(-1);
 		} else {
-			ship.setDirectionX(0);
+			ship.direction.x=(0);
 		}
 
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            ship.setDirectionY(1);
+            ship.direction.y= (1);
         } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            ship.setDirectionY(-1);
+            ship.direction.y=(-1);
         } else {
-            ship.setDirectionY(0);
+            ship.direction.y=(0);
         }
-/*
-        if(escape){
-            parent.switchToMaenu();
-        }
-*/
+
         int rnd = (int)(randGenerator.nextDouble()*100);
         if(rnd<3){
 			meteors.add(new Meteor(this));
 		}
-        System.out.println(meteors.size());
+
 		for (Meteor meteor : meteors) {
 			meteor.update(dt);
 		}
@@ -103,7 +99,7 @@ public class GameScreen implements Screen {
 		ship.update(dt);
 		for (int i = meteors.size()-1; i >= 0; i--) {
 			if(meteors.get(i).isColliding(ship.position.x, ship.position.y, ship.getWidth(), ship.getHeight())){
-				anim.add(new MeteorAnimation(meteors.get(i).position.x, meteors.get(i).position.y, meteors.get(i).getScale()));
+				anim.add(new MeteorAnimation(meteors.get(i).position.x, meteors.get(i).position.y, meteors.get(i).scale));
 				meteors.remove(i);
 				crash.play();
 				

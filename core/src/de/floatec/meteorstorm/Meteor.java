@@ -21,12 +21,12 @@ public class Meteor extends GameObject{
 		//texture = new Texture(Gdx.files.internal("meteor.png"));
 		//texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		Random randGenerator = new java.util.Random(System.currentTimeMillis());
-        super.setPosition(new Vector2(screen.getW(), screen.getH() * (float) randGenerator.nextDouble()));
+        position = (new Vector2(screen.getW(), screen.getH() * (float) randGenerator.nextDouble()));
 		//x = screen.getW();
 		//y = screen.getH() * (float) randGenerator.nextDouble();
 		//directionX = -1;
-        super.setDirection(new Vector2(-0.1f,0f));
-		super.setScale(0.4f + (0.6f * (float) randGenerator.nextDouble()));
+        direction=(new Vector2(-0.1f,0f));
+		scale=(0.4f + (0.6f * (float) randGenerator.nextDouble()));
 	}
 
 	/*public void draw(SpriteBatch batch) {
