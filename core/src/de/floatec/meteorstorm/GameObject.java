@@ -15,7 +15,7 @@ public class GameObject {
     //private Sprite sprite;
     //private int directionY, directionX;
     protected GameScreen screen;
-    protected float scale;
+    protected float scale=1;
     protected Sprite sprite;
 
     /*
@@ -94,7 +94,7 @@ public class GameObject {
 
     public void draw(SpriteBatch batch) {
 
-        batch.draw(texture,position.x, position.y,texture.getWidth(),texture.getHeight());
+        batch.draw(texture,position.x, position.y,texture.getWidth()*scale,texture.getHeight()*scale);
 
     }
     public void update(float dt) {
