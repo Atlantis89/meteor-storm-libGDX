@@ -50,8 +50,23 @@ public class GameScreen implements Screen {
 
 	private void update(float dt) {
 
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            ship.direction.x = (1);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            ship.direction.x = (-1);
+        } else {
+            ship.direction.x = (0);
+        }
 
-	}
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            ship.direction.y = (1);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            ship.direction.y = (-1);
+        } else {
+            ship.direction.y = (0);
+        }
+        ship.update(dt);
+    }
 
 	private void draw() {
 		Gdx.gl.glClearColor(0, 0, 0, 1);

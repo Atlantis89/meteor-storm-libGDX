@@ -9,8 +9,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 
 public class GameObject {
+    public static final int SPEED = 80;
     protected Vector2 position;
-
+    protected Vector2 direction = new Vector2(0,0);
     protected Texture texture;
     protected GameScreen screen;
     protected float scale=1;
@@ -43,7 +44,8 @@ public class GameObject {
     }
     public void update(float dt) {
 
-
+        Vector2 move = direction.nor().scl(SPEED *dt);
+        position = position.add(move);
     }
 
 }
