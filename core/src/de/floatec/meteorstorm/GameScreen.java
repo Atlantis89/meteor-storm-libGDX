@@ -44,10 +44,6 @@ public class GameScreen implements Screen {
 		camera = new OrthographicCamera(1, 1);
 		batch = new SpriteBatch();
 		ship = new Ship(this);
-		
-		music = Gdx.audio.newSound(Gdx.files.internal("music.mp3"));
-		crash = Gdx.audio.newSound(Gdx.files.internal("crash.ogg"));
-		music.loop();
 	}
 
 	@Override
@@ -88,14 +84,6 @@ public class GameScreen implements Screen {
 			}
 		}
 		ship.update(dt);
-		for (int i = meteors.size()-1; i >= 0; i--) {
-			if(meteors.get(i).isColliding(ship.position.x, ship.position.y, ship.getWidth(), ship.getHeight())){
-				meteors.remove(i);
-				crash.play();
-				
-			}
-		}
-
 
 	}
 
