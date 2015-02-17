@@ -22,11 +22,7 @@ public class GameScreen implements Screen {
 	private Ship ship;
 	private float w;
 	private float h;
-	private List<Meteor> meteors = new ArrayList<Meteor>();
-	private Random randGenerator = new java.util.Random(System.currentTimeMillis());
-	private Sound music;
-	private Sound crash;
-	
+
 	public float getH() {
 		return h;
 	}
@@ -54,36 +50,6 @@ public class GameScreen implements Screen {
 
 	private void update(float dt) {
 
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			ship.direction.x=(1);
-		} else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			ship.direction.x=(-1);
-		} else {
-			ship.direction.x=(0);
-		}
-
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            ship.direction.y= (1);
-        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            ship.direction.y=(-1);
-        } else {
-            ship.direction.y=(0);
-        }
-
-        int rnd = (int)(randGenerator.nextDouble()*100);
-        if(rnd<3){
-			meteors.add(new Meteor(this));
-		}
-
-		for (Meteor meteor : meteors) {
-			meteor.update(dt);
-		}
-		for (int i = meteors.size()-1; i >= 0; i--) {
-			if(meteors.get(i).position.x<0){
-				meteors.remove(i);
-			}
-		}
-		ship.update(dt);
 
 	}
 
@@ -92,9 +58,7 @@ public class GameScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		ship.draw(batch);
-		for (Meteor meteor : meteors) {
-			meteor.draw(batch);
-		}
+
 		
 		font.draw(batch, "Meteorstorm", 10, 20);
 		batch.end();
