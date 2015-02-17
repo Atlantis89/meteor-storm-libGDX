@@ -29,9 +29,6 @@ public class GameObject {
         sprite = new Sprite(region);
     }
 
-
-
-
     public float getWidth() {
         return this.texture.getWidth();
     }
