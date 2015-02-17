@@ -23,7 +23,6 @@ public class GameScreen implements Screen {
 	private float w;
 	private float h;
 	private List<Meteor> meteors = new ArrayList<Meteor>();
-	private List<MeteorAnimation> anim = new ArrayList<MeteorAnimation>();
 	private Random randGenerator = new java.util.Random(System.currentTimeMillis());
 	private Sound music;
 	private Sound crash;
@@ -91,21 +90,12 @@ public class GameScreen implements Screen {
 		ship.update(dt);
 		for (int i = meteors.size()-1; i >= 0; i--) {
 			if(meteors.get(i).isColliding(ship.position.x, ship.position.y, ship.getWidth(), ship.getHeight())){
-				anim.add(new MeteorAnimation(meteors.get(i).position.x, meteors.get(i).position.y, meteors.get(i).scale));
 				meteors.remove(i);
 				crash.play();
 				
 			}
 		}
-		for (MeteorAnimation meteorAnimation : anim) {
-			meteorAnimation.update(dt);
-		}
-		for (int i = anim.size()-1; i >= 0; i--) {
-			if(!anim.get(i).isRunnung()){
-				anim.remove(i);
-				
-			}
-		}
+
 
 	}
 
@@ -116,9 +106,6 @@ public class GameScreen implements Screen {
 		ship.draw(batch);
 		for (Meteor meteor : meteors) {
 			meteor.draw(batch);
-		}
-		for (MeteorAnimation meteorAnimation : anim) {
-			meteorAnimation.draw(batch);
 		}
 		
 		font.draw(batch, "Meteorstorm", 10, 20);
