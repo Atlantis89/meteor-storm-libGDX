@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class MeteorAnimation {
 
-	Animation animation;
+    public static final int FRAME_COUNT = 8;
+    public static final float FRAME_DURATION = 0.025f;
+    Animation animation;
 	Texture sheet; 
 	TextureRegion[] frames;
 	TextureRegion currentFrame;
@@ -22,13 +24,13 @@ public class MeteorAnimation {
 		this.scale=scale;
 		
 		sheet = new Texture(Gdx.files.internal("animation.png"));
-        TextureRegion[][] tmp = TextureRegion.split(sheet, sheet.getWidth()/8, sheet.getHeight());            
-        frames = new TextureRegion[8];
+        TextureRegion[][] tmp = TextureRegion.split(sheet, sheet.getWidth()/ FRAME_COUNT, sheet.getHeight());
+        frames = new TextureRegion[FRAME_COUNT];
         int index = 0;
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < FRAME_COUNT; i++) {
                 frames[index++] = tmp[0][i];
         }
-        animation = new Animation(0.025f, frames);      
+        animation = new Animation(FRAME_DURATION, frames);
                      
         stateTime = 0f;            
 	}
@@ -40,9 +42,9 @@ public class MeteorAnimation {
     }
 	
 	public void draw(SpriteBatch batch){
-		batch.draw(currentFrame, x, y,sheet.getWidth()/8*scale,sheet.getHeight()*scale);
+		batch.draw(currentFrame, x, y,sheet.getWidth()/FRAME_COUNT*scale,sheet.getHeight()*scale);
 	}
 	public boolean isRunnung(){
-		return fulltime<=0.025*8;
+		return fulltime<=FRAME_DURATION*FRAME_COUNT;
 	}
 }
